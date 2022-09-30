@@ -1,6 +1,6 @@
-###Build:
+## Build:
 gcc ./checkprime.c -lpthread -lm -o checkprime
-###testnumbers:
+## testnumbers:
 212312411
 45076559864632921
 1844674407370955143
