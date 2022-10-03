@@ -1,9 +1,7 @@
-#include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <math.h>
-#include <time.h>
-int N = 6;
+#include <stdio.h>
 
 struct checkDevidersData{
 	unsigned long long int number;
@@ -26,7 +24,7 @@ void *checkDeviders(void *data){                                                
 	return NULL;
 }
 
-int isPrime(unsigned long long int number){
+int isPrime(unsigned long long int number, int N){
 	int result = 1;
 	unsigned long long int MAX = sqrtl(number);
 	//printf("MAX = %llu\n", MAX);
@@ -49,24 +47,3 @@ int isPrime(unsigned long long int number){
 	return result;
 }
 
-
-int main(){
-	unsigned long long int number;
-	struct timespec start, finish;
-	double elapsed;
-	while(1){
-		scanf("%i", &N);
-		scanf("%llu", &number);
-		clock_gettime(CLOCK_MONOTONIC, &start);
-		if(isPrime(number) == 1)
-			printf("YES ");
-		else
-			printf("NO  ");
-		clock_gettime(CLOCK_MONOTONIC, &finish);
-		elapsed = (finish.tv_sec - start.tv_sec);
-		elapsed += (finish.tv_nsec - start.tv_nsec) / 1000000000.0; //-------------?
-		printf("(%f sec)\n\n", elapsed);
-	}
-
-	return 0;
-}
