@@ -25,6 +25,7 @@ void *checkDeviders(void *data){                                                
 }
 
 int isPrime(unsigned long long int number, int N){
+	printf("check: %llu, %i\n", number, N);
 	int result = 1;
 	unsigned long long int MAX = sqrtl(number);
 	//printf("MAX = %llu\n", MAX);
@@ -35,7 +36,7 @@ int isPrime(unsigned long long int number, int N){
 		ranges[i].a = 2 + i*(MAX/N+1);
 		ranges[i].b = 2 + (i+1)*(MAX/N+1);
 		ranges[i].result = &result;
-		printf("new thread: %llu..%llu\n", ranges[i].a, ranges[i].b);
+		//printf("new thread: %llu..%llu\n", ranges[i].a, ranges[i].b);
 		pthread_create(&(threads[i]), NULL, checkDeviders, &ranges[i]);
 	}
 	
@@ -43,7 +44,7 @@ int isPrime(unsigned long long int number, int N){
 		pthread_join(threads[i], NULL);
 	free(threads);
 	free(ranges);
-	
+	//printf("result: %i\n", result);
 	return result;
 }
 

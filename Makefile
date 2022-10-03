@@ -16,6 +16,5 @@ client.o: client.c
 	gcc -c client.c
 
 clean:
-	rm -rf *.o server client
+	rm -rf *.o *~ server client
 
-#gcc ./checkprime.c -lpthread -lm -o checkprime
